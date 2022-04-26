@@ -19,7 +19,7 @@ public class Logic1
     /// </summary>
     public bool CigarParty(int cigars, bool isWeekend)
     {
-        throw new NotImplementedException();
+        return true; // throw new NotImplementedException();
     }
 
     /// <summary>
