@@ -17,7 +17,16 @@ public class Array2
     /// </summary>
     public int CountEvens(int[] nums)
     {
-        throw new NotImplementedException();
+        int max = nums.Length;
+        int count = 0;
+        for (int i = 0; i < max; i++)
+        {
+            if (nums[i] % 2 == 0)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 
     /// <summary>
@@ -31,7 +40,21 @@ public class Array2
     /// </summary>
     public int BigDiff(int[] nums)
     {
-        throw new NotImplementedException();
+        int max = nums.Length;
+        int vmax = nums[0];
+        int vmin = nums[0];
+        for (int i = 1; i < max; i++)
+        {
+            if (nums[i] > vmax)
+            {
+                vmax = nums[i];
+            }
+            if (nums[i] < vmin)
+            {
+                vmin = nums[i];
+            }
+        }
+        return vmax - vmin;
     }
 
     /// <summary>
@@ -47,7 +70,41 @@ public class Array2
     /// </summary>
     public int CenteredAverage(int[] nums)
     {
-        throw new NotImplementedException();
+        int max = nums.Length;
+        int vmax = nums[0];
+        int vmin = nums[0];
+        bool minSkip = false;
+        bool maxSkip = false;
+        int rec = 0;
+        int sum = 0;
+
+        for (int i = 1; i < max; i++)
+        {
+            if (nums[i] > vmax)
+            {
+                vmax = nums[i];
+            }
+            if (nums[i] < vmin)
+            {
+                vmin = nums[i];
+            }
+        }
+        for (int i = 0; i < max; i++)
+        {
+            if (nums[i] == vmax && !minSkip)
+            {
+                minSkip = true;
+                continue;
+            }
+            if (nums[i] == vmin && !maxSkip)
+            {
+                maxSkip = true;
+                continue;
+            }
+            rec++;
+            sum = sum + nums[i];
+        }
+        return sum/rec;
     }
 
     /// <summary>
@@ -61,7 +118,27 @@ public class Array2
     /// </summary>
     public int Sum13(int[] nums)
     {
-        throw new NotImplementedException();
+        int sum = 0;
+        bool skip = false;
+
+        if (nums.Length > 0)
+        {
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == 13)
+                {
+                    skip = true;
+                    continue;
+                }
+                if (skip)
+                {
+                    skip = false;
+                    continue;
+                }
+                sum = sum + nums[i];
+            }
+        }
+        return sum;    
     }
 
     /// <summary>
